@@ -1,0 +1,12 @@
+1、配置
+(1)	配置个人用户和邮箱
+git config --global user.name "ning00"
+git config --global user.email 872245994@qq.com
+(2) 生成keys
+ssh-keygen -t rsa -C "872245994@qq.com"
+将生成的文件.ssh/id_rsa的内容复制并配置到Github的setting/SSH and GPG keys
+
+2、克隆Github上的项目
+git clone url (url是github项目的路径：git@github.com:ning00/reactStudy.git)
+3、常用命令
+查看文件：git -a
