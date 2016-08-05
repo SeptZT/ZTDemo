@@ -7,6 +7,12 @@ ssh-keygen -t rsa -C "872245994@qq.com"
 将生成的文件.ssh/id_rsa的内容复制并配置到Github的setting/SSH and GPG keys
 
 2、克隆Github上的项目
-git clone url (url是github项目的路径：git@github.com:ning00/reactStudy.git)
+git clone [url] ([url]是github项目的路径：git@github.com:ning00/reactStudy.git)
 3、常用命令
+更新: git pull [url]
 查看文件：git -a
+添加文件到缓存：git add name.txt
+查看文件状态：git status -s或git status(详细信息)
+提交到本地：git commit -m "备注"
+提交到服务器：git push [url]
+
