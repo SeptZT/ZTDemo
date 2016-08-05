@@ -10,9 +10,20 @@ ssh-keygen -t rsa -C "872245994@qq.com"
 git clone [url] ([url]是github项目的路径：git@github.com:ning00/reactStudy.git)
 3、常用命令
 更新: git pull [url]
+
 查看文件：git -a
-添加文件到缓存：git add name.txt
 查看文件状态：git status -s或git status(详细信息)
+
+添加文件到缓存：git add name.txt或者git add --a(添加全部)
 提交到本地：git commit -m "备注"
 提交到服务器：git push [url]
 
+删除文件：git rm name.txt(删除本地的)
+git add --a
+git commit -m "备注"
+git push [url](更新到服务器)
+
+改文件名：git mv
+
+
+//checout log merge branch tag
