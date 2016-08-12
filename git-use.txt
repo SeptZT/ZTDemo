@@ -25,5 +25,5 @@ git push [url](更新到服务器)
 
 改文件名：git mv
 
-
-//checout log merge branch tag
+ 
+//、、、、、、checout log merge branch tag
