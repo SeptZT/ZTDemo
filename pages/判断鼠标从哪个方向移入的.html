@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>判断鼠标从哪个方向移入的</title>
+		<style type="text/css">
+  		body{
+  		  margin: 0;
+  		}
+			.box{
+			  margin: 50px 100px;
+			  width: 200px;
+			  height: 200px;
+			  background: #40BBF4;
+			}
+		</style>
+	<body>
+
+	    <div class="box">
+  	    <span class="direction"></span>
+  	  </div>
+
+
+	</body>
+</html>
+<script src="../js/jquery-3.0.0.js" charset="utf-8"></script>
+<script>
+//screenX\pageX\offsetX\clientX
+  $('.box').on('mouseenter', function(e){
+    $('.direction').text("移入方向"+direction(this, e));
+  }).on('mouseleave', function(e){
+    $('.direction').text("移出方向"+direction(this, e));
+  });
+  function direction(_this, e){
+    var width = $(_this).width();
+    var height = $(_this).height();
+    var x1 = _this.offsetLeft;
+    var y1 = _this.offsetTop;
+    var x2 = _this.offsetLeft + width;
+    var y2 = _this.offsetTop;
+    var x0 = _this.offsetLeft + width / 2;
+    var y0 = _this.offsetTop + height / 2;
+    var x = e.clientX;
+    var y = e.clientY;
+    var k1 = (y0 - y1) / (x0 - x1);
+    var k2 = (y0 - y2) / (x0 - x2);
+    var k = (y0 - y) / (x0 - x);
+    if (isFinite(k) && k<k1 && k>k2){ //斜率是[k1, k2]区间的是从左右进入的
+      var dir = x < x0 ? "左":"右";
+    } else{
+      var dir = y < y0? "上":"下";
+    }
+    return dir;
+  }
+</script>

@@ -1,0 +1,38 @@
+<html>
+<head>
+  <meta charset="utf-8">
+<title></title>
+<style>
+  body>div{
+    margin-bottom: 10px;
+  }
+  .linear{
+    width: 100px;
+    height: 50px;
+    background: #ccc;
+    /*background: -webkit-gradient(linear,center top,center bottom,from(#ccc), to(#000));*/
+    background: -webkit-linear-gradient(top,#ccc,#000);
+  }
+  .radius{
+    width: 100px;
+    height: 50px;
+    background: #ccc;
+    background: -webkit-gradient(radial,center center,0, center bottom, 50, from(#ccc), to(#000));
+  }
+  .linear2{
+    width: 100px;
+    height: 50px;
+    background: #7EC4CC;
+    background-image: repeating-linear-gradient(transparent 5px, transparent 10px, rgba(255,255,255,.5) 10px, rgba(255,255,255,.5) 30px);
+  }
+</style>
+
+</head>
+<body>
+  <div class="linear"></div>
+  <div class="radius"></div>
+  <div class="linear2"></div>
+</html>
+<script>
+
+</script>

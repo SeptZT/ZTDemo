@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	  在函数中this到底取何值，是在函数真正被调用执行的时候确定的，函数定义的时候确定不了
+	</body>
+</html>
+<script type="text/javascript">
+//1、构造函数
+    function Foo(){
+      this.name = "mary";
+      console.log(this); //Foo
+    }
+    var f1 = new Foo();
+    console.log(f1.name); //mary
+
+
+//2、函数作为对象的一个属性
+    var obj = {
+      x: 10,
+      fn: function(){
+        console.log(this);
+        console.log(this.x);
+      }
+    }
+    //作为对象的一个属性被调用
+    obj.fn(); //console：obj 10
+    //不作为obj的一个属性被调用;fn函数被赋给了一个变量中，fn1()执行时相当于被window调用
+    var fn1 = obj.fn;
+    fn1();  //console：window undefined
+
+
+//3、函数用call或者apply调用
+    var obj1 = {
+      x: 10
+    }
+    var fn1 = function(){
+      console.log(this);  //obj1
+      console.log(this.x);  //10
+    }
+    fn1.call(obj1); //当一个函数被call和apply调用时，this的值就取传入的对象的值
+
+
+//4、全局&调用普通函数
+    var obj2 = {
+  	  x: 10,
+  	  fn2: function(){
+  	    function f(){
+  	      console.log(this); //window
+  	      console.log(this.x); //undefined
+  	    }
+  	    f();
+  	  }
+  	}
+  	obj2.fn2();
+</script>

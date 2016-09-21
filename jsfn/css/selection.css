@@ -1,0 +1,75 @@
+.selection{
+  display: inline-block;
+  position: relative;
+  width: 250px;
+  height: auto;
+  min-height: 32px;
+  vertical-align: middle;
+  border: 1px solid #dcdcdc;
+  cursor: pointer;
+}
+.selection .dropdown{
+  position: absolute;
+  right: 4px;
+  top: 12px;
+  height: 0;
+  width: 0;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-top: 6px solid #4F4F4F;
+  z-index: 2;
+}
+.selection .dropdown:hover{
+  cursor: pointer;
+}
+.selection .checked-list{
+  position: relative;
+  height: auto;
+  width: 100%;
+  min-height: 32px;
+  max-height: 140px;
+  overflow: auto;
+}
+.selection .checked-list>span{
+  display: inline-block;
+  border-radius: 4px;
+  background: #ddd;
+  padding: 0 2px;
+  margin-left: 3px;
+  line-height: 25px;
+}
+.selection .checked-name{
+  cursor: auto;
+}
+.selection .checked-list .item-del{
+  padding: 0 0 0 2px;
+  color: #fff;
+}
+.selection .checked-list .item-del:hover{
+  cursor: pointer;
+  color: #38b7ea;
+  transform: rotate(180deg);
+}
+.selection-item{
+  position: absolute;
+  display: none;
+  left: -1px;
+  width: 100%;
+  border: 1px solid #dcdcdc;
+  max-height: 100px;
+  overflow: auto;
+  background-color: white;
+  padding: 0;
+  margin: 0;
+}
+.selection-item>li{
+  height: 20px;
+  line-height: 20px;
+  padding-left: 3px;
+}
+.selection-item .item-checked{
+  display: none;
+}
+.selection-item>li:hover{
+  background: #ddd;
+}

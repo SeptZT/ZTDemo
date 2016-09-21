@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+
+			input{
+			  position: relative;
+			  height: 38px;
+			  line-height: 38px;
+			  width: 350px;
+			  margin-bottom: 10px;
+			  border: 1px solid #ddd;
+			}
+		</style>
+    <link rel="stylesheet" href="../css/selection.css"/>
+
+	</head>
+	<body>
+
+       爱好：
+      <input type="text" name="selection" value="1;2;"/>
+
+
+	</body>
+</html>
+<script src="../js/jquery-3.0.0.js" charset="utf-8"></script>
+<script src="../js/selection.js" charset="utf-8"></script>
+<script type="text/javascript">
+$(function(){
+  var data = [133333333333333, 21111111111, 31111111111, 4222222222222, 5333333333333, 644444444444, 7555555555555555, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+  selection.loadSelectionItem(data);
+})
+
+</script>

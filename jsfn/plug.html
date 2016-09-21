@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	  <div id="">
+	  	基础版jQuery插件
+知道了上面这些知识，我们就可以来写一个简单的jQuery插件。假如我现在需要一个jQuery插件用来改变标签内容颜色，就可以按下面的方式来实现这个插件：
+
+$.fn.changeStyle = function(colorStr){
+         this.css("color",colorStr);
+}
+然后按下面的方式来使用插件：
+$("p").changeStyle("red");
+插件调用的时候，插件内部的this就是当前调用插件的jQuery对象，这样的话每个使用$()方法选择的标签，在调用changeStyle()插件时都会使用css()方法重设color样式。
+
+满足链式调用的jQuery插件
+链式调用时jQuery的一大特色，一个通用的插件应该遵循jQuery风格，满足链式调用要求。实现链式调用的方式也很简单：
+
+$.fn.changeStyle = function(colorStr){
+         this.css("color",colorStr);
+         return this;
+}
+然后使用的时候就可以链式调用其他方法了：
+$("p").changeStyle("red").addClass("red-color");
+	  </div>
+	</body>
+</html>

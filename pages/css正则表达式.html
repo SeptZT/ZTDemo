@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script></script>
+    <style type="text/css">
+     /*元素的属性名是kk*/
+      /*div[kk]{
+        color: red;
+      }*/
+
+
+     /*值需含有单词'val'*/
+      /*div[kk~=val]{
+        color: red;
+      }*/
+
+     /*值需含有字符'val'*/
+      /*div[kk*=val]{
+        color: red;
+      }*/
+
+
+     /*属性值开头必须是bar的单词，或者开头是bar-*/
+      /*div[kk|=val]{
+        color: red;
+      }*/
+
+     /*属性值开头必须是val的字符，或者开头是val-*/
+      /*div[kk^=val]{
+        color: red;
+      }*/
+
+
+     /*属性值最后三个字符需要是val*/
+      /*div[kk$=val]{
+        color: red;
+      }*/
+
+     /*忽略大小写*/
+      /*div[kk$="val" i]{
+        color: red;
+      }*/
+    </style>
+  </head>
+  <body>
+    <div kk = "VAL">1</div>
+    <div kk = "Val">2</div>
+    <div kk = "val-ue">3</div>
+    <div kk = "value">4</div>
+    <div kk = "data val">5</div>
+    <div kk = "val">6</div>
+  </body>
+</html>

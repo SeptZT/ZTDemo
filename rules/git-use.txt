@@ -25,5 +25,7 @@ git push [url](更新到服务器)
 
 改文件名：git mv
 
- 
+4、在本地新建目录
+mkdir d:/study
+cd d:stydt
 //、、、、、、checout log merge branch tag

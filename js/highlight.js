@@ -14,6 +14,11 @@
 
 ----------------------------------------*/
 
+
+/*使用
+ * MarkHighLight($('#box'),key);
+ * */
+
 function MarkHighLight(obj,keywords,cssClass){
 
 
@@ -143,9 +148,6 @@ function key_middle(str, keywords){
     }
 
 }
-/*使用
- * MarkHighLight($('#wapper'),$('.search input').val());
- * */
 
 // function MarkHighLight(obj,keyword)
 

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas{
+			  border: 1px solid #ddd;
+			}
+		</style>
+	</head>
+	<body>
+	  <canvas id="myCanvas" width="200" height="200">
+	    <!--位于canvas中的文本会在不支持它的浏览器中展示-->
+	    Your browser doesn't include support for the canvas tag.
+	  </canvas>
+	</body>
+</html>
+<script type="text/javascript">
+	var canvas = document.getElementById('myCanvas');
+	var c = canvas.getContext('2d'); //getContext()返回一个用于在画布上绘图的环境
+
+var num_arr = [];
+var num = 4;
+function Random(num){
+  var count = 0;
+  num_arr = [];
+
+  for(var i=0; i<num - 1; i++){
+    num_arr.push(Math.random());
+    count += num_arr[i];
+  }
+  if (count > 1){
+    Random(num);
+  } else{
+    num_arr.push(1 - count);
+  }
+}
+</script>
