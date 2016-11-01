@@ -1,0 +1,114 @@
+
+*{
+  box-sizing: border-box;
+}
+.hide{
+  display: none;
+}
+
+/**
+ * =====================
+ * 按钮
+ * */
+.btn {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+      touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+.btn-default {
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+}
+.btn-primary {
+  color: #fff;
+  background-color: #337ab7;
+  border-color: #2e6da4;
+}
+
+/**
+ * =====================
+ * 模态框样式
+ * */
+
+
+.modal{
+  position: absolute;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, .2);
+  outline: 0;
+  box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+  padding: 0 10px;
+}
+.modal-content{
+  position: relative;
+  width: 400px;
+  height: 300px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.modal-header {
+  min-height: 16px;
+  line-height: 1.4;
+  padding: 15px;
+  border-bottom: 1px solid #e5e5e5;
+}
+.modal-title {
+  margin: 0;
+}
+.modal-close{
+  position: absolute;
+  right: 5px;
+  transition: transform .3s;
+  cursor: pointer;
+}
+.modal-close:hover{
+  transform: rotate(180deg);
+}
+.modal-body{
+  position: relative;
+  padding: 15px;
+}
+.modal-footer{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 15px;
+  width: 100%;
+  text-align: right;
+  border-top: 1px solid #e5e5e5;
+}
+.modal-footer .btn + .btn {
+  margin-bottom: 0;
+  margin-left: 5px;
+}
+
+/*** 点击弹窗，body背景变灰  ***/
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: #000 none repeat scroll 0 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0.3;
+  z-index: 1040;
+}

@@ -31,3 +31,7 @@ ol {
 a img {
   border: 0;
 }
+
+table{
+  border-collapse: collapse;
+}

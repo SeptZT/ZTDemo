@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../css/ztPlug.css"/>
+		<style type="text/css">
+html,body{
+  height: 100%;
+}
+		</style>
+	</head>
+	<body>
+	  <div class="modal hide">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <span class="modal-title">详情</span>
+          <span class="modal-close">&times;</span>
+	      </div>
+	      <div class="modal-body">
+          <input type="text" checked-type="email require" value="11"/>
+          <input type="password" checked-type = "password" value="22"/>
+          <textarea name="" rows="" cols=""checked-type="email require">55</textarea>
+         <div id=""checked-type="number require">
+44
+          </div>
+	      </div>
+	      <div class="modal-footer">
+	      	<botton class="btn btn-default">确定</botton>
+	      	<botton class="btn btn-primary modal-cancel">取消</botton>
+	      </div>
+	    </div>
+	  </div>
+
+	</body>
+</html>
+<script src="../js/jquery-3.0.0.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/ztPlug.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+//显示模态框
+$('.modal').modal('show');
+$('.modal').hideDropBox();
+$('.btn-default').click(function(){
+  //表单验证
+  $('.modal').formChecked();
+})
+
+//监听回车obj.onEnter(obj);
+$('input').onEnter($('.btn-default'));
+
+var aa = [1, 2, 12, 11, 12];
+var bb = aa.delItem(12, false);
+console.log(aa, bb)
+</script>
