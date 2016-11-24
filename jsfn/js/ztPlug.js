@@ -82,11 +82,56 @@
     }
   });
 
+
   //====================
 
   /**
-   * 模态框
+   * 表单：
+   * 1、正则验证
    * */
+  $.fn.extend({
+    //表单验证
+    formChecked: function(){
+      var _this = this,
+          checked = true,
+          pattern = {
+            "require": /\S/,  //非空
+            "number": /^\d+$/,  //整数
+            "email": /^([\w\.\-]+)@([\w\.\_]+)\.([\w]{2,4})$/,  //邮箱
+            "ip": /^((25[0-5]|2[0-4]\d|[01]?\d\d?)($|(?!\.$)\.)){4}$/,  //IP
+            "port": /^(\d|[1-9]\d{1,3}|[1-5]\d{4}|6[0-4]\d{3}|65[0-4]\d{2}|655[0-2]\d|6553[0-5])$/, //端口号
+            "domain": / ^(?=^.{3,255}$)[a-zA-Z0-9][-a-zA-Z0-9]{0,62}(\.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+$/, //域名
+          };
+
+      _this.find("[checked-type]").each(function(){
+        var text = this.value ? this.value : this.innerText,
+            _type = $(this).attr("checked-type");
+
+        if (_type != ""){
+          var _typearr = _type.split(" ");
+
+          for (var i=0, len=_typearr.length; i<len; i++){
+            if (!pattern[_typearr[i]]){
+              console.log("暂不支持 checked-type =", _typearr[i], " 的验证");
+              continue;
+            } else if (!pattern[_typearr[i]].test(text)){
+              checked = false;
+              break;
+            }
+          }
+        }
+      });
+
+      return checked;
+    }
+  });
+}(jQuery);
+
+//==============================
+/**
+ * 模态框
+ * */
++function(){
   $.fn.extend({
     modal: function(options){
       var _this = this;
@@ -120,64 +165,7 @@
     }
   });
 
-  //====================
-
-  /**
-   * 表单：
-   * 1、正则验证
-   * */
-  $.fn.extend({
-    //表单验证
-    formChecked: function(){
-      var _this = this,
-          checked = true,
-          pattern = {
-            "require": /\S/,  //非空
-            "number": /^\d+$/,  //整数
-            "email": /^([\w\.\-]+)@([\w\.\_]+)\.([\w]{2,4})$/,  //邮箱
-            "ip": /^((25[0-5]|2[0-4]\d|[01]?\d\d?)($|(?!\.$)\.)){4}$/,  //IP
-            "port": /^(\d|[1-9]\d{1,3}|[1-5]\d{4}|6[0-4]\d{3}|65[0-4]\d{2}|655[0-2]\d|6553[0-5])$/, //端口号
-          };
-
-      _this.find("[checked-type]").each(function(){
-        var text = this.value ? this.value : this.innerText,
-            _type = $(this).attr("checked-type");
-
-        if (_type != ""){
-          var _typearr = _type.split(" ");
-
-          for (var i=0, len=_typearr.length; i<len; i++){
-            if (!pattern[_typearr[i]]){
-              console.log("暂不支持 checked-type =", _typearr[i], " 的验证");
-              continue;
-            } else if (!pattern[_typearr[i]].test(text)){
-              checked = false;
-              break;
-            }
-          }
-        }
-      });
-
-      return checked;
-    }
-  });
-
 }(jQuery);
-
-//==============================
-
-/**
- * 阻止冒泡
- * */
-function stopPropagation(event){  //函数传值的目的是为了兼容火狐
-  var e = event || window.event;  //兼容IE
-
-  if (e.stopPropagation){
-    e.stopPropagation();
-  } else {
-    e.cancelBubble = true;
-  }
-}
 
 //==============================
 
@@ -211,3 +199,36 @@ function stopPropagation(event){  //函数传值的目的是为了兼容火狐
 
 }(jQuery);
 
+//==============================
+
+/**
+ * 常用js兼容方法：
+ * 1、阻止冒泡
+ * 2、阻止默认行为
+ * */
+var zt = {
+
+  /**
+   * 阻止冒泡
+   * */
+  stopPropagation: function(event){ //函数传值的目的是为了兼容火狐
+    var e = event || window.event;  //兼容IE
+    if (e.stopPropagation){
+      e.stopPropagation();
+    } else {
+      e.cancelBubble = true;
+    }
+  },
+
+  /**
+   * 阻止默认行为
+   * */
+  preventDefault: function(event){  //函数传值的目的是为了兼容火狐
+    var e = event || window.event;  //兼容IE
+    if (e.preventDefault){
+      e.preventDefault();
+    } else {
+      e.returnValue = false;
+    }
+  }
+}

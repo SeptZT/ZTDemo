@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	  <script src="../js/base64.js" type="text/javascript" charset="utf-8"></script>
+	  <script type="text/javascript">
+	  	let aa = base64encode(utf16to8("丫丫"));
+	  	let bb = utf8to16(base64decode(aa));
+	  	console.log(aa, bb);
+	  </script>
+	</body>
+</html>
