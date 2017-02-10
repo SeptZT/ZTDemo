@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_8exrzsnar2tsxlxr.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/progressBar.css"/>
+		<style>
+		body{
+		  margin: 0;
+		}
+		.progress-bar{
+		  margin: 50px;
+		}
+		.wapper {
+		  padding: 20px;
+		  border: 1px solid red;
+		  height: 100px;
+		  width: 1000px;
+		}
+
+		</style>
+	</head>
+	<body>
+	  <button id="bb">
+      不可拖拽
+    </button>
+	  <button id="aa">
+	可拖拽
+	  </button>
+
+
+
+<div class="wapper">
+  dragEle
+   <div class="progress-bar">
+	  </div>
+</div>
+
+
+
+
+
+
+
+	</body>
+<script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="../js/progressBar.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+  $('.progress-bar').dragBar({"dragEle": $('.wapper')[0]});  //可拖动
+	$('#aa').off('click').on('click', function(){
+    $('.progress-bar').dragBar(0.9, true); //给定初始值， 设置可拖动
+  })
+  $('#bb').off('click').on('click', function(){
+    $('.progress-bar').dragBar(0.5, false);
+
+  })
+
+</script>
+</html>

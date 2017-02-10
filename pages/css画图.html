@@ -38,6 +38,42 @@
         border: 9px solid transparent;
         border-top-color: white;
 		  }
+		  /*向左、向右*/
+		  .btn{
+        position: relative;
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+        border: 1px solid #ccc;
+      }
+      .btn:before{
+        content: '';
+        position: absolute;
+        height: 0;
+        width: 0;
+        left: 1px;
+        top: 4px;
+        border-top: 11px solid transparent;
+        border-right: 22px solid #ccc;
+        border-bottom: 11px solid transparent;
+      }
+      .btn:after{
+        content: '';
+        position: absolute;
+        height: 0;
+        width: 0;
+        top: 4px;
+        right: 7px;
+        border-top: 11px solid transparent;
+        border-right: 7px solid #fff;
+        border-bottom: 11px solid transparent;
+      }
+      .next{
+        -webkit-transform: rotate(180deg);
+        -moz-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+        transform: rotate(180deg);
+      }
 		</style>
 	</head>
 	<body>
@@ -47,6 +83,13 @@
 	  <div class="msg">
 	    <div class="triangle"></div>
 	  </div>
+	  <!--向左-->
+    <div class="btn">
 
+    </div>
+    <!--向右-->
+    <div class="btn next">
+
+    </div>
 	</body>
 </html>

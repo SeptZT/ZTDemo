@@ -7,6 +7,8 @@
 		<style type="text/css">
 html,body{
   height: 100%;
+}tr{
+  display: none;
 }
 		</style>
 	</head>
@@ -31,12 +33,39 @@ html,body{
 	      </div>
 	    </div>
 	  </div>
+    <table>
+    	<tr>
+    		<td>12</td>
+    		<td>12</td>
+    		<td>12</td>
+    	</tr>
+    	<tr>
+        <td>12</td>
+        <td>12</td>
+        <td>12</td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td>12</td>
+        <td>12</td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td>12</td>
+        <td>12</td>
+      </tr>
 
+      <tr>
+        <td>12</td>
+        <td>12</td>
+        <td>12</td>
+      </tr>
+    </table>
 	</body>
 </html>
 <script src="../js/jquery-3.0.0.js" type="text/javascript" charset="utf-8"></script>
 <script src="../js/ztPlug.js" type="text/javascript" charset="utf-8"></script>
-<script type="text/javascript">
+<script type="text/javascript">/*
 //显示模态框
 $('.modal').modal('show');
 $('.modal').hideDropBox();
@@ -50,5 +79,6 @@ $('input').onEnter($('.btn-default'));
 
 var aa = {"1": "1"};
 var bb = aa.delItem1();
-console.log(aa, bb)
+console.log(aa, bb)*/
+$('tr').loadAnimation();
 </script>

@@ -14,7 +14,7 @@
    * */
   $.fn.extend({
 
-    //数字num，从0递增到num
+    // 数字num，从0递增到num
     zeroToNum: function(num) {
       //判断传入的变量是否存在、是否为数字；
       if (!num || (num && typeof(num) != "number") || num.toString().length > 15){
@@ -56,8 +56,28 @@
       return this;
     },
 
-    //监听回车
-    onEnter: function(obj){
+    // 加载
+    loadAnimation: function(time) {
+      time = time && (typeof(time) == 'number') ? time : 50;
+      var obj = $(this);
+      console.log(obj);
+      if (obj.length && obj.length != 0) {
+        var i = 1, len = obj.length;
+        obj.eq(0).show();
+        var timer = setInterval(function(){
+          if (i == len){
+            clearInterval(timer);
+          } else {
+            obj.eq(i++).fadeIn();
+          }          
+        }, time);
+      }
+      
+      return this;
+    },
+    
+    // 监听回车
+    onEnter: function(obj) {
       var _this = this;
 
       _this.on('keyup', function(event){
@@ -70,7 +90,7 @@
       return this;
     },
 
-    //点击空白处，指定框消失
+    // 点击空白处，指定框消失
     hideDropBox: function(){
       var _this = this;
       $(_this).off('click').on('click', function(e){

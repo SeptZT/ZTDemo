@@ -158,8 +158,8 @@ function _resetNowPage() {
 	nowPage = 1;
 }
 
-module.exports.init = _init
-module.exports.reset = _resetNowPage;
+/*module.exports.init = _init
+module.exports.reset = _resetNowPage;*/
 
 /*使用
  _init("page", json["data"]["total"] / pagesize,function(nowPage){

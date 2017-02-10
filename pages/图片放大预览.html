@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.box {
+			  position: relative;
+			  margin: 0 auto;
+			  width: 200px;
+			  height: 200px;
+			  background: url(../img/5f7db28e8831be78d135cc943abf93f1.jpg) 0 0/100% 100% no-repeat;
+			}
+			.move {
+			  position: absolute;
+			  width: 60px;
+			  height: 60px;
+			  background: goldenrod;
+			  opacity: .6;
+			}
+			.big {
+			  position: absolute;
+			  left: 200px;
+			  top: 0;
+			  width: 320px;
+			  height: 320px;
+			  background: url(../img/5f7db28e8831be78d135cc943abf93f1.jpg) 0 0/400% 400% no-repeat;
+			  background-position: 0 0;
+			}
+			.hide {
+			   display: none;
+			}
+		</style>
+	</head>
+	<body>
+	  <div class="box">
+	    200*200
+	    <div class="move hide">60*60</div>
+	    <div class="big hide">320*320</div>
+	  </div>
+	  <script src="../js/jquery-3.0.0.js" type="text/javascript" charset="utf-8"></script>
+	  <script type="text/javascript">
+  	  var box_left = $('.box').offset().left;
+  	  var box_top = $('.box').offset().top;
+	  	$('.box').on('mouseenter', function(){
+  	   $('.move, .big').removeClass('hide');
+	  	}).on('mousemove', function(e){
+	  	  var move_w = $('.move').width(),//移动块的宽
+	  	      move_h = $('.move').height(),//移动块的高
+	  	      move_left = e.pageX - box_left - move_w / 2, //移动块距box容器的X距离,把鼠标放在移动快正中
+	          move_top = e.pageY - box_top - move_h / 2,      //移动块距box容器的Y距离,把鼠标放在移动快正中
+            maxleft = $('.box').width() - $('.move').width(), // 移动块距box容器的X最大距离
+            maxtop = $('.box').height() - $('.move').height(),  // 移动块距box容器的Y最大距离
+            multiple_x = Math.round($('.big').width() / $('.move').width()),  // 移动块和放大块的比例
+            multiple_y = Math.round($('.big').height() / $('.move').height());  // 移动块和放大块的比例
+            
+        if (move_left < 0) {
+          move_left = 0;
+        } else if (move_left >maxleft){
+          move_left = maxleft;
+        }
+        if (move_top < 0) {
+          move_top = 0;
+        } else if (move_top >maxtop){
+          move_top = maxtop;
+        }
+	  	  $('.move').css({'left': move_left, 'top': move_top});
+	  	  console.clear();
+	  	  console.log(move_left, move_top);
+	  	  $('.big').css({'background-position': '-'+(e.pageX - box_left)*multiple_x +'px -'+(e.pageY - box_top)*multiple_y+'px'});
+	  	}).on('mouseleave', function(){
+	  	  $('.move, .big').addClass('hide');
+	  	});
+	  	$('.big').on('mouseenter', function(e){
+       $('.move, .big').addClass('hide');
+      })
+	  </script>
+	</body>
+</html>
