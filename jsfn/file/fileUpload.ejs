@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="/file/fileUpload.css"/>
+		<style type="text/css">	
+		#demo2 {
+		  margin: 50px;
+		  width: 800px;
+		}
+		</style>
+	</head>
+	<body>
+    <h3>可拖拽文件上传</h3>
+    <div id="demo2" >
+    </div>      
+    <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <!--<script src="/file/jquery-3.0.0.js" type="text/javascript" charset="utf-8"></script>-->
+    <script src="/file/fileUpload.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+    $('#demo2').uploader({'url': '/uploader', 'preview': false}); // url必需传，其他参数可选
+    
+   
+    
+    //回调函数在点击上传后执行
+    /*$('#demo2').uploader({'url': '/uploader'}, function(formData){      
+      formData.append('name', 'mary');  // 添加其他参数
+      return formData;
+    });*/
+
+    </script>
+	</body>
+</html>

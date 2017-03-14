@@ -1,0 +1,90 @@
+$height: 34px;
+$min-width: 34px;
+$border-color: #ddd;
+$selected-color: #b6c9d4;
+$disabled-color: #E9E9E9;
+$button-bg: #8fdaf7;
+
+.pagination ul {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    -webkit-user-select: none;
+    user-select: none;
+    
+    &:after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+}
+.pagination li {
+    display: inline-block;
+    list-style: none;
+    cursor: pointer;
+    vertical-align: top;
+    
+    height: $height;
+    min-width: $min-width;
+    line-height: $height;
+    text-align: center;
+    border: 1px solid $border-color;
+    
+    &+li {
+        border-left: none;
+    }   
+}
+
+
+.pagination {
+    .page-change[index=page-first] {
+        border-radius: 4px 0 0 4px;
+    }
+    .page-change[index=page-last] {
+        border-radius: 0 4px 4px 0;
+    }
+    .page-search {
+        margin-left: 10px;
+        border: none;
+        line-height: calc(#{$height - 2px});
+        
+        input,
+        button {
+            padding: 0;
+        }
+        
+        input { 
+            width: 50px;
+            height: $height;
+            border: 1px solid $border-color;
+            text-align: center;
+            border-radius: 3px 0 0 3px;
+        }
+        button {
+            width: 40px;
+            height: calc(#{$height} + 2px);
+            background-color: $button-bg;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 0 3px 3px 0;
+        }
+        
+        span {
+            padding-left: 10px;
+        }
+    }
+    
+    .page-selected {
+        background-color: $selected-color;
+        cursor: default;
+    }
+    .page-disabled {
+        background-color: $disabled-color;
+        cursor: no-drop;
+    }
+    .err_tip {
+        position: absolute;
+        color: red;
+    }
+}

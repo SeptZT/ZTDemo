@@ -1,91 +1,27 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-		<style type="text/css">
-			/* 页码样式 */
-.pagenation{
-  position: absolute;
-  width: calc(100% - 20px);
-  height: 34px;
-  bottom: 15px;
-  text-align: center;
-  letter-spacing: -8px;
-}
-.pagenation a{
-  display: inline-block;
-  min-width: 34px;
-  height: 34px;
-  padding: 0 2px;
-  margin: 0;
-  line-height: 34px;
-  text-align: center;
-  border-left: 1px solid #dddddd;
-  border-top: 1px solid #dddddd;
-  border-bottom: 1px solid #dddddd;
-  text-decoration: none;
-  font-size: 14px;
-  color: #000;
-  letter-spacing: 0;
-  transition: background-color .3s;
-}
-.pagenation a:first-child{
-  border-left: 1px solid #dddddd;
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
-}
-.last-child{
-  border-right: 1px solid #dddddd;
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
-}
-.pagenation span{
-  padding-left: 5px;
-  font-size: 14px;
-  letter-spacing: 2px;
-}
-.pagenation input[type=text]{
-  position: relative;
-  width: 34px;
-  height: 34px;
-  text-align: center;
-  padding: 0;
-  font-size: 14px;
-  border-radius: 0;
-}
-.pagenation button{
-  position: relative;
-  top: 1px;
-  width: 34px;
-  height: 34px;
-  line-height: 14px;
-  border-radius: 0;
-}
-.pagenation a:hover, .pagenation .page-selected{background-color: #b6c9d4;}
-.page-disabled{
-  background-color: #E9E9E9;
-  cursor: default;
-}
-.page-disabled:hover{background-color: #E9E9E9 !important;text-decoration: none !important;}
-.pagenation .err_tip{position:absolute;display:inline-block;line-height:34px;height: 34px;top: 6px;color:red;}
-
-
-		</style>
-	</head>
-	<body>
-	  <a href='javascript:void(0);' >&gt;&gt;</a>
-	  <div id="page" class="pagenation">
-
-	  </div>
-	  <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
-	   <!--<script src="../../js/pagenation.js" type="text/javascript" charset="utf-8"></script>-->
-<script src="../js/pagination.js" type="text/javascript" charset="utf-8"></script>
-<script type="text/javascript">
-	$('#page').pageInit(15, function(a){
-	  console.log("==========", a);
-	  nowPage = a;
-	});
-</script>
-	</body>
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<style type="text/css">
+		html, body {
+		  margin: 0;
+		  padding: 0;
+		  height: 100%;
+		}
+	</style>
+	<link rel="stylesheet" type="text/css" href="../css/pagination.css"/>
+</head>
+<body>
+  <div id="page" class="pagination">
+    
+  </div>
+  <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="../js/pagination.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$('#page').pageInit(30, function(nowPage) {
+		  console.log('+++', nowPage);
+		})
+	</script>
+</body>
 </html>

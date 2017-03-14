@@ -7,26 +7,35 @@ ssh-keygen -t rsa -C "872245994@qq.com"
 将生成的文件.ssh/id_rsa的内容复制并配置到Github的setting/SSH and GPG keys
 
 2、克隆Github上的项目
-git clone [url] ([url]是github项目的路径：git@github.com:ning00/reactStudy.git;git clone git://github.com/NickQiZhu/d3-cookbook.git
+git clone [url] ([url]是github项目的路径：git@github.com:ning00/reactStudy.git;
+                                     git://github.com/NickQiZhu/d3-cookbook.git
 )
 3、常用命令
 更新: git pull [url]
 
-查看文件：git -a
-查看文件状态：git status -s或git status(详细信息)
+在本地恢复已删除的文件（版本库还有）： git checkout -- name.html
 
-添加文件到缓存：git add name.txt或者git add --a(添加全部)
+
+查看文件：git -a
+查看文件状态：git status -s
+                            或git status(详细信息)
+
+
+添加文件到缓存：git add name.txt
+                                或者git add --a(添加全部)
+                                或者git add *.js(所有js文件)
 提交到本地：git commit -m "备注"
 提交到服务器：git push [url]
+
 
 删除文件：git rm name.txt(删除本地的)
 git add --a
 git commit -m "备注"
 git push [url](更新到服务器)
 
-改文件名：git mv
 
+改文件名：git mv
+查看操作历史：git log
 4、在本地新建目录
 mkdir d:/study
-cd d:stydt
-//、、、、、、checout log merge branch tag
+cd d:study
