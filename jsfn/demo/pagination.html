@@ -9,19 +9,28 @@
 		  padding: 0;
 		  height: 100%;
 		}
+		.pagination {
+		  margin-top: 100px;
+		}
 	</style>
 	<link rel="stylesheet" type="text/css" href="../css/pagination.css"/>
 </head>
 <body>
-  <div id="page" class="pagination">
+  <div id="page1" class="pagination">
+    
+  </div>
+  <div id="page2" class="pagination">
     
   </div>
   <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
   <script src="../js/pagination.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
-		$('#page').pageInit(30, function(nowPage) {
+		$('#page1').pageInit(20, function(nowPage) {
 		  console.log('+++', nowPage);
-		})
+		});
+		$('#page2').pageInit({total: 20, pageCount: 8, nowPage: 20}, function(nowPage) {
+      console.log('+++', nowPage);
+  });
 	</script>
 </body>
 </html>

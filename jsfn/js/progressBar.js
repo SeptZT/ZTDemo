@@ -1,4 +1,4 @@
-function Bar(obj, opts){
+function Bar(obj, opts) {
   this.DEFAULTS = { //默认参数
     "num": 0,
     "isDrag": true,
