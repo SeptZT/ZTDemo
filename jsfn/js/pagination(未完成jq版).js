@@ -1,52 +1,36 @@
-/* *
- * 参数说明:
- * @param   param = {
- *   'dom': '#page',  // 分页容器
- *   'pageSize': 5,   // 每页显示的条数
- *   'pageCount': 8,  // 最多显示的翻页数字按钮, 缺省值为10
- *   'nowPage': 1 // 当前选中页， 缺省值为1
- * }
- * 
- * @param   handle    [回调函数为获取翻页数据的方法]
- * */
-function Page(param, handle) {
-  this.obj = $(pram.dom);
-  this.pagesize = parseInt(param.pageSize, 10);
-  this.handle = handle; // 回调函数
-  this.pageCount = 10; // 设置显示页码的数量
+function Page(ele, opts, handle) {
+  this.obj = $(ele);
+  this.handle = handle;
+  this.pageCount = 10;  // 设置显示页码的数量
   this.nowPage = 1; // 设置当前选中页
 
-  if (param.pageCount) {
-    this.pageCount = parseInt(param.pageCount, 10);
+  if (!isNaN(opts)) {
+    this.total = opts;  // 总页数
+  } else if (typeof opts === 'object') {
+    this.total = opts.total;
+    if (opts.pageCount) {
+      this.pageCount = opts.pageCount;
+    }
+    if (opts.nowPage && !isNaN(opts.nowPage) && opts.nowPage > 0 && opts.nowPage <= opts.total) {
+      this.nowPage = parseInt(opts.nowPage, 10);
+    }
   }
-  if (param.nowPage) {
-    this.nowPage = parseInt(param.nowPage, 10);
-  }
+
+  this._init();
 }
 
 /* *
  * 生成页码
  * */
-Page.prototype._init = function(total) {
+Page.prototype._init = function() {
   var startNum, endNum;
-  var totalPage; // 总页数(向上取整，避免传入的数是小数)
-  var startClass = ''; // 上一页、第一页的样式
-  var endClass = ''; // 下一页、最后一页的样式
-  var tmp;
+  var total = this.total;
+  var totalPage = Math.ceil(total / this.pageCount);  // 总页数(向上取整，避免传入的数是小数)
+  var startClass = '';  // 上一页、第一页的样式
+  var endClass = '';  // 下一页、最后一页的样式
+  var tmp = total - this.nowPage;
   var html = [];
   var i = 0;
-  
-  total = parseInt(total, 10);
-  this.total = total; // 总页数
-
-  totalPage = Math.ceil(total / this.pageSize);
-  tmp = total - this.nowPage;
-
-  if (this.nowPage > totalPage) {
-    this.nowPage = totalPage;
-    this.handle(totalPage);
-    return;
-  }
 
   // 判断页码显示的起始数字startNum和结束数字startNum
   if (total <= this.pageCount) {
@@ -63,7 +47,7 @@ Page.prototype._init = function(total) {
   if (this.nowPage === 1) {
     startClass = ' page-disabled';
   }
-  if (this.nowPage === totalPage) {
+  if (this.nowPage === total) {
     endClass = ' page-disabled';
   }
 
@@ -76,7 +60,7 @@ Page.prototype._init = function(total) {
 
   html.push('<li class="page-change' + endClass + '" title="下一页" index="page-next">&gt;</li>');
   html.push('<li class="page-change' + endClass + '" title="最后一页" index="page-last">&gt;&gt;</li>');
-  html.push('<li class="page-search"><input placeholder="搜索"/><button>搜索</button><span>共' + totalPage + '页</span></li>');
+  html.push('<li class="page-search"><input placeholder="搜索"/><button>搜索</button><span>共' + totalPage + '页' + total + '条</span></li>');
 
   this.obj.html('<ul class="pagination">' + html.join('') + '</ul>');
 
@@ -93,7 +77,7 @@ Page.prototype._bind = function() {
   var handle = this.handle;
 
   if (!handle || typeof handle !== 'function') {
-    //  console.warn('no callback bind to pagination！');
+//  console.warn('no callback bind to pagination！');
     return;
   }
 
@@ -143,7 +127,8 @@ Page.prototype._bind = function() {
 Page.prototype._goTo = function() {
   var obj = this.obj.find('.page-search');
   var _this = this;
-  obj.find('button').off('click').on('click', function() {
+
+  obj.find('button').off('click').on('click', function(){
     var val = obj.find('input').val();
     var time = 1500;
 
@@ -178,6 +163,43 @@ Page.prototype._enter = function() {
   });
 };
 
-/* module.exports = function(param, handle) {
-  return new Page(param, handle);
-};*/
+(function($) {
+  $.fn.extend({
+
+    /* *
+     * 调用方法:
+     * $ele.pageInit(opts, handle);
+     *
+     * 参数说明:
+     * @param   opts 
+     *          (1) 可以传number，总条数 
+     *          (2) 可以传一个对象{ total: 20, pageCount: 8, nowPage: 5 }
+     *                            total表示总条数，
+     *                            pageCount表示显示页码的数量，缺省值为10
+     *                            nowPage: 选中页，缺省值为1
+     * @param   handle    [回调函数为获取翻页数据的方法]
+     * */
+    pageInit: function(opts, handle) {
+      if (!opts || !handle) {
+        $(this).html('');
+      } else {
+        new Page(this, opts, handle);
+      }
+      return this;
+    },
+
+    /* *
+     * 调用方法:
+     * $ele.pageRest();
+     *
+     * 说明:
+     * 重置this.nowPage  业务逻辑中使用的方法
+     * 如果发现业务逻辑无法重置当前页码  请手动调用该方法重置当前页码
+     * 多数无法重置的BUG发生在搜索-还原以后
+     * */
+    pageRest: function() {
+      this.nowPage = 1;
+      return this;
+    }
+  });
+})(jQuery);

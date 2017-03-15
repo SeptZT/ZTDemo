@@ -1,7 +1,7 @@
 /**
- * 注：本插件不支持IE8及其以下的IE浏览器
+ * 注：不支持IE8及其以下的IE浏览器
  * 1、（必须）页面上存在<input name="selection">
- * 2、调用selection.loadSelectionItem(data);生成下拉列表
+ * 2、调用selection.loadSelectionList(data);生成下拉列表
  *    data为数组, 如：data = [1, 2, 3, 4, 5, 6, 7, 8];【可根据需求自行修改函数】
  * 3、调用selection.isCheckedItem();
  *    编辑时， 选中项以英文分号分隔，并以分号结尾  写进<input name="selection" value="1;2;3;">的value中
@@ -76,7 +76,7 @@ var selection = {
       }
     });
   },
-  loadSelectionItem: function(data){ // data为数组
+  loadSelectionList: function(data){ // data为数组
     var len = data.length;
     var html = "";
     for(var i=0; i<len; i++){
