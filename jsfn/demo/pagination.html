@@ -17,20 +17,23 @@
 </head>
 <body>
   <div id="page1">
-    
+
   </div>
   <div id="page2">
-    
+
   </div>
   <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
   <script src="../js/pagination.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
-		$('#page1').pageInit(20, function(nowPage) {
-		  console.log('+++', nowPage);
-		});
-		$('#page2').pageInit({total: 20, pageCount: 8, nowPage: 20}, function(nowPage) {
-      console.log('+++', nowPage);
-  });
+	  var page = new Page({'selector': '#page1', 'pageSize': 8, 'pageCount': 10}, function(nowPage) {
+	    loadData();
+	  });
+    loadData();
+	  function loadData() {
+	    page._init(1000);
+	  }
+
+
 	</script>
 </body>
 </html>

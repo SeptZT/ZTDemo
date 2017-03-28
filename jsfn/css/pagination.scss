@@ -1,42 +1,46 @@
 $height: 34px;
 $min-width: 34px;
 $border-color: #ddd;
-$selected-color: #b6c9d4;
-$disabled-color: #E9E9E9;
+$selected-color: #b6c9d4!important;
+$disabled-color: #E9E9E9!important;
+$hover-color: #eee;
 $button-bg: #8fdaf7;
 
-.pagination ul {
+ul.pagination {
     margin: 0;
     padding: 0;
     text-align: center;
     -webkit-user-select: none;
     user-select: none;
-    
     &:after {
         content: '';
         display: table;
         clear: both;
     }
-}
-.pagination li {
-    display: inline-block;
-    list-style: none;
-    cursor: pointer;
-    vertical-align: top;
-    
-    height: $height;
-    min-width: $min-width;
-    line-height: $height;
-    text-align: center;
-    border: 1px solid $border-color;
-    
-    &+li {
-        border-left: none;
-    }   
-}
 
+    li {
+        display: inline-block;
+        list-style: none;
+        cursor: pointer;
+        vertical-align: top;
 
-.pagination {
+        height: $height;
+        min-width: $min-width;
+        line-height: $height;
+        text-align: center;
+        border: 1px solid $border-color;
+
+        &+li {
+            border-left: none;
+        }
+    }
+
+    .page-change,
+    .page-num {
+        &:hover {
+            background: $hover-color;
+        }
+    }
     .page-change[index=page-first] {
         border-radius: 4px 0 0 4px;
     }
@@ -47,13 +51,12 @@ $button-bg: #8fdaf7;
         margin-left: 10px;
         border: none;
         line-height: calc(#{$height - 2px});
-        
-        input,
-        button {
+
+        button,
+        input {
             padding: 0;
         }
-        
-        input { 
+        input {
             width: 50px;
             height: $height;
             border: 1px solid $border-color;
@@ -69,12 +72,11 @@ $button-bg: #8fdaf7;
             cursor: pointer;
             border-radius: 0 3px 3px 0;
         }
-        
         span {
             padding-left: 10px;
         }
     }
-    
+
     .page-selected {
         background-color: $selected-color;
         cursor: default;
