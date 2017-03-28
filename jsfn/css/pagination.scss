@@ -7,86 +7,86 @@ $hover-color: #eee;
 $button-bg: #8fdaf7;
 
 ul.pagination {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  -webkit-user-select: none;
+  user-select: none;
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+
+  li {
+    display: inline-block;
+    list-style: none;
+    cursor: pointer;
+    vertical-align: top;
+
+    height: $height;
+    min-width: $min-width;
+    line-height: $height;
     text-align: center;
-    -webkit-user-select: none;
-    user-select: none;
-    &:after {
-        content: '';
-        display: table;
-        clear: both;
-    }
+    border: 1px solid $border-color;
 
-    li {
-        display: inline-block;
-        list-style: none;
-        cursor: pointer;
-        vertical-align: top;
+    &+li {
+      border-left: none;
+    }
+  }
 
-        height: $height;
-        min-width: $min-width;
-        line-height: $height;
-        text-align: center;
-        border: 1px solid $border-color;
+  .page-change,
+  .page-num {
+    &:hover {
+      background: $hover-color;
+    }
+  }
+  .page-change[index=page-first] {
+    border-radius: 4px 0 0 4px;
+  }
+  .page-change[index=page-last] {
+    border-radius: 0 4px 4px 0;
+  }
+  .page-search {
+    margin-left: 10px;
+    border: none;
+    line-height: calc(#{$height - 2px});
 
-        &+li {
-            border-left: none;
-        }
+    button,
+    input {
+      padding: 0;
     }
+    input {
+      width: 50px;
+      height: $height;
+      border: 1px solid $border-color;
+      text-align: center;
+      border-radius: 3px 0 0 3px;
+    }
+    button {
+      width: 40px;
+      height: calc(#{$height} + 2px);
+      background-color: $button-bg;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 0 3px 3px 0;
+    }
+    span {
+      padding-left: 10px;
+    }
+  }
 
-    .page-change,
-    .page-num {
-        &:hover {
-            background: $hover-color;
-        }
-    }
-    .page-change[index=page-first] {
-        border-radius: 4px 0 0 4px;
-    }
-    .page-change[index=page-last] {
-        border-radius: 0 4px 4px 0;
-    }
-    .page-search {
-        margin-left: 10px;
-        border: none;
-        line-height: calc(#{$height - 2px});
-
-        button,
-        input {
-            padding: 0;
-        }
-        input {
-            width: 50px;
-            height: $height;
-            border: 1px solid $border-color;
-            text-align: center;
-            border-radius: 3px 0 0 3px;
-        }
-        button {
-            width: 40px;
-            height: calc(#{$height} + 2px);
-            background-color: $button-bg;
-            border: none;
-            color: #fff;
-            cursor: pointer;
-            border-radius: 0 3px 3px 0;
-        }
-        span {
-            padding-left: 10px;
-        }
-    }
-
-    .page-selected {
-        background-color: $selected-color;
-        cursor: default;
-    }
-    .page-disabled {
-        background-color: $disabled-color;
-        cursor: no-drop;
-    }
-    .err_tip {
-        position: absolute;
-        color: red;
-    }
+  .page-selected {
+    background-color: $selected-color;
+    cursor: default;
+  }
+  .page-disabled {
+    background-color: $disabled-color;
+    cursor: no-drop;
+  }
+  .err_tip {
+    position: absolute;
+    color: red;
+  }
 }
