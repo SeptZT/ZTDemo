@@ -26,10 +26,10 @@
   <script src="../js/pagination.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
 	  var page = new Page({'selector': '#page1', 'pageSize': 8, 'pageCount': 10}, function(nowPage) {
-	    loadData();
+	    loadData(nowPage);
 	  });
     loadData();
-	  function loadData() {
+	  function loadData(nowPage) {
 	    page._init(1000);
 	  }
 	</script>

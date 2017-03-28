@@ -1,13 +1,21 @@
 /* *
  * 参数说明:
- * param = {
+ *  param = {
  *   'selector': '#page',  // 分页容器
  *   'pageSize': 5,   // 每页显示的条数
  *   'pageCount': 8,  // 最多显示的翻页数字按钮, 缺省值为10
  *   'nowPage': 1 // 当前选中页， 缺省值为1
- * }
+ *  }
  *
- * handle    [回调函数：获取翻页数据的方法]
+ *  handle    [回调函数：获取翻页数据的方法]
+ *
+ * 調用方式:
+ *   var page = new Page({'selector': '#page1', 'pageSize': 8}, function(nowPage) {
+ *     loadData(nowPage);
+ *   });
+ *   function loadData(nowPage) {
+ *     page._init(1000);
+ *   }
  * */
 function Page(param, handle) {
   this.obj = $(param.selector);
@@ -26,6 +34,7 @@ function Page(param, handle) {
 
 /* *
  * 生成页码
+ * 参数说明：total  数据总条数
  * */
 Page.prototype._init = function(total) {
   var startNum, endNum;
@@ -80,7 +89,6 @@ Page.prototype._init = function(total) {
   this.obj.html('<ul class="pagination">' + html.join('') + '</ul>');
 
   this._bind();
-  this._goTo();
   this._enter();
 };
 
@@ -94,6 +102,9 @@ Page.prototype._bind = function() {
   if (!handle || typeof handle !== 'function') {
     return;
   }
+
+  // 点击搜索
+  this.obj.find('button').off('click').on('click', this._goTo.bind(this));
 
   // 点击数字翻页
   this.obj.find('.page-num').off('click').on('click', function() {
@@ -137,25 +148,24 @@ Page.prototype._bind = function() {
  * 点击搜索
  * */
 Page.prototype._goTo = function() {
-  var obj = this.obj.find('.page-search');
-  var _this = this;
-  obj.find('button').off('click').on('click', function() {
-    var val = obj.find('input').val();
-    var time = 1500;
+  var search_obj = this.obj.find('.page-search');
+  var val = search_obj.find('input').val();
+  var time = 1500;
 
-    if (isNaN(val) || val < 1 || val > _this.totalPage || !/^\d+$/.test(val)) {
-      obj.append('<span class="err_tip">输入有误</span>');
-      setTimeout(function() {
-        obj.find('.err_tip').fadeOut();
-      }, time);
+  if (isNaN(val) || val < 1 || val > this.totalPage || !/^\d+$/.test(val)) {
+    search_obj.append('<span class="err_tip">输入有误</span>');
+    setTimeout(function() {
+      search_obj.find('.err_tip').fadeOut(function() {
+        $(this).remove();
+      });
+    }, time);
 
-      obj.find('input').val('');
-      return;
-    }
+    search_obj.find('input').val('');
+    return;
+  }
 
-    _this.nowPage = parseInt(val, 10);
-    _this.handle(_this.nowPage);
-  });
+  this.nowPage = parseInt(val, 10);
+  this.handle(this.nowPage);
 };
 
 /* *
@@ -167,7 +177,7 @@ Page.prototype._enter = function() {
 
     e = e || window.event;
     if (e.keyCode === enterCode) {
-      this.obj.find('button').click();
+      this._goTo();
     }
   }.bind(this));
 };
