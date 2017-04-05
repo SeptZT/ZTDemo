@@ -10,12 +10,3 @@
 #back_top:hover {
   cursor: pointer;
 }
-
-body {
-  overflow: hidden;
-}
-
-.aa {
-  overflow: auto;
-  height: 300px;
-}

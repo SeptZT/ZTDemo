@@ -10,7 +10,7 @@
  *  handle    [回调函数：获取翻页数据的方法]
  *
  * 調用方式:
- *   var page = new Page({'selector': '#page1', 'pageSize': 8}, function(nowPage) {
+ *   var page = new Page({'selector': '#page', 'pageSize': 8}, function(nowPage) {
  *     loadData(nowPage);
  *   });
  *   function loadData(nowPage) {
