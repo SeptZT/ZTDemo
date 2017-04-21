@@ -17,14 +17,14 @@
     <div id="aa">
 	  </div>
   <script src="../js/jquery-1.12.1.min.js" type="text/javascript" charset="utf-8"></script>
-	<script src="../js/backTop.ES6.js"></script>
+	<script src="../js/backTop.js"></script>
 	<script type="text/javascript">
 	  var html = '';
 	  for (var i = 0; i < 200; i++) {
 	    html += '<p>啦啦啦啦啦啦啦啦啦啦' + i + '</p>';
 	  }
 	  $('#aa').html(html);
-		$('#back_top').backTop({"obj": $('#aa')});
+		$('#back_top').backTop({"selector": '#aa'});
 	</script>
 	</body>
 </html>

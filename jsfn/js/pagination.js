@@ -8,14 +8,6 @@
  *  }
  *
  *  handle    [回调函数：获取翻页数据的方法]
- *
- * 調用方式:
- *   var page = new Page({'selector': '#page', 'pageSize': 8}, function(nowPage) {
- *     loadData(nowPage);
- *   });
- *   function loadData(nowPage) {
- *     page._init(1000);
- *   }
  * */
 function Page(param, handle) {
   this.obj = $(param.selector);
@@ -145,7 +137,7 @@ Page.prototype._bind = function() {
 };
 
 /* *
- * 点击搜索
+ * 搜索
  * */
 Page.prototype._goTo = function() {
   var search_obj = this.obj.find('.page-search');

@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>图片轮播</title>
+	<style type="text/css">
+	  ul, li {
+	    margin: 0;
+	    padding: 0;
+	    list-style: none;
+	  }
+		.carousel-box {
+		  position: relative;
+		  width: 1000px;
+		  height: 400px;
+		  overflow: hidden;
+		}
+		.carousel-inner {
+		  position: absolute;
+		  height: 100%;
+		  width: 100%;
+		  white-space: nowrap;
+		}
+		.carousel-inner .item {
+		  height: 100%;
+		  width: 100%;
+		  display: inline-block;
+		}
+    img {
+      height: 100%;
+      width: 100%;
+    }
+    .carousel-box .carousel-control {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      width: 50px;
+      background: #ccc;
+    }
+    .carousel-box .prev {
+      left: 0;
+    }
+    .carousel-box .next {
+      right: 0;
+    }
+	</style>
+</head>
+<body>
+  <div class="carousel-box">
+    <ul class="carousel-inner"></ul>
+    <div class="carousel-control prev">&lt;</div>
+    <div class="carousel-control next">&gt;</div>
+  </div>
+  <script src="../../js/jquery-3.0.0.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/carousel.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var src = ['../../img/1.jpg', '../../img/2.jpg', '../../img/3.jpg'];
+
+		var html = '';
+		var obj = $('.carousel-inner');
+
+    var width = obj.width();
+		var carousel_arr = src.concat(src);
+		carousel_arr.push(src[0]);
+		carousel_arr.unshift(src[src.length - 1]);
+
+    var len = carousel_arr.length;
+		carousel_arr.forEach(function(value) {
+		  html += '<li class="item"><img src="'+value+'" alt="'+value+'"/></li>';
+		});
+		obj.html(html).css('left', -width + 'px');
+
+		$('.carousel-control').off('click').on('click', function() {
+      var left = parseInt(obj.css('left'));
+      var time = 1;
+      left = $(this).hasClass('next') ? left - width : left + width;
+
+      if (left <= -width * (len - 1)) {
+        setTimeout(function() {
+          obj.css({
+            'transition': 'left 0s',
+            'left': -width + 'px'
+          });
+        }, 1000);
+      } else if (left >= 0) {
+        setTimeout(function() {
+          obj.css({
+            'transition': 'left 0s',
+            'left': -width * (len - 2) + 'px'
+          });
+        }, 1000 * time);
+      }
+
+      obj.css({
+        'transition': 'left ' + time + 's',
+        'left': left + 'px'
+      });
+		});
+
+	</script>
+</body>
+</html>

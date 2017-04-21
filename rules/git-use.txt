@@ -36,6 +36,13 @@ git push [url](更新到服务器)
 
 改文件名：git mv
 查看操作历史：git log
-4、在本地新建目录
+
+4、新建分支
+git branch 你的分支名字
+git checkout 你的分支名字
+git push origin 你的分支名字
+git config --global credential.helper store 设置保存用户名和密码
+
+5、在本地新建目录
 mkdir d:/study
 cd d:study
