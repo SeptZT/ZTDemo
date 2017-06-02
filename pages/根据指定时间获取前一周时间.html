@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="UTF-8">
+    <title></title>
+  </head>
+
+  <body>
+  </body>
+  <script src="js/jquery-3.0.0.js" type="text/javascript" charset="utf-8"></script>
+  <script type="text/javascript">
+console.log(getWeekByDate('2017-05-05'));
+
+function getWeekByDate(date) {
+  let dd = new Date(date);
+  let week = [dealDate(dd)];
+
+  for(let i = 0; i < 6; i++) {
+    dd.setDate(dd.getDate() - 1);
+    week.push(dealDate(dd));
+  }
+  return week.reverse();
+}
+
+function dealDate(date) {
+  return date.getFullYear() + '-' + addZero(date.getMonth() + 1) + '-' + addZero(date.getDate());
+}
+
+function addZero(num) {
+  return num < 10 ? '0' + num : num;
+}
+  </script>
+
+</html>

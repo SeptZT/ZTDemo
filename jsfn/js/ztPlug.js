@@ -17,8 +17,7 @@
     // 数字num，从0递增到num
     zeroToNum: function(num) {
       //判断传入的变量是否存在、是否为数字；
-      if (!num || (num && typeof(num) != "number") || num.toString().length > 15){
-        console.log("请传入正确的数字");
+      if (!num || (num && typeof(num) != 'number') || num.toString().length > 15){
         return false;
       }
 
@@ -69,13 +68,13 @@
             clearInterval(timer);
           } else {
             obj.eq(i++).fadeIn();
-          }          
+          }
         }, time);
       }
-      
+
       return this;
     },
-    
+
     // 监听回车
     onEnter: function(obj) {
       var _this = this;

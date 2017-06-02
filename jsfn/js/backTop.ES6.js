@@ -11,49 +11,50 @@ class BackTop {
 
     let $ele = $.extend({}, $(this), $(ele));
 
-    $ele.off('click').on('click', this._move.bind(this));
+    this._back($ele);
 
-    $(this.opts.selector).on('scroll', this._checkPosition.bind(this, $ele));
+    this._scroll($ele);
   }
 
-  _move() {
-    let obj = $(this.opts.selector);
+  _back($ele) {
+    let $obj = $(this.opts.selector);
     let dest = this.opts.dest;
 
-    if (obj.scrollTop() != dest && !obj.is(':animated')) {  //如果滚动条没有在指定位置, 并且点击回到顶部时滚动条处于静止状态
-      obj.animate({
-        scrollTop: dest
-      }, this.opts.speed);
-    }
+    $ele.off('click').on('click', () => {
+      if($obj.scrollTop() != dest && !$obj.is(':animated')) {
+        $obj.animate({
+          scrollTop: dest
+        }, this.opts.speed);
+      }
+    });
   }
 
-  _checkPosition($ele) {
-    let opts = this.opts;
+  _scroll($ele) {
+    let $obj = this.opts.selector === 'body' ? $(document) : $(this.opts.selector);  // body的scroll方法有问题
+    let pos = this.opts.pos;
 
-    if ($(opts.selector).scrollTop() > opts.pos) {
-      $ele.fadeIn('slow');
-    } else {
-      $ele.fadeOut();
+    $obj[0].onscroll = function() {
+      if($obj.scrollTop() >= pos && $ele.is(':hidden')) {
+        $ele.show();
+      } else if ($obj.scrollTop() < pos && $ele.is(':visible')) {
+        $ele.hide();
+      }
     }
   }
 }
 
-/* *
- * 封装成jQuery方法
- * */
-;$.fn.extend({
-  backTop: function(opts){
-    return $(this).each(function(){
-      new BackTop(this, opts);
-    });
-  }
-});
+$.fn.backTop = function (opts) {
+  new BackTop(this, opts);
+  return this;
+};
 
+//if (module && module.exports) {
+//module.exports = function(ele, opts) {
+//  return new BackTop(ele, opts);
+//};
+//}
 /* *
- * 调用方法：
- * $(ele).backTop(opts); 如
- * $('#back_top').backTop({'speed': 100, 'dest': '300px'});
- * 参数说明： opts为可选参数：
+ * 参数说明：
  *  opts = {
  *    selector: 滚动的对象的选择器; 缺省值 body
  *    pos: 回到顶部出现的位置; 缺省值 $(window).height()

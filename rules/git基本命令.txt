@@ -1,0 +1,75 @@
+﻿1：初始化新仓库   
+       git init                                                                   
+
+2：新增文件并提交
+        git  add  *.txt                                                             
+        git  commit  -m  '提交信息'                                        
+        git  commit  -a   -m  ' XXX '           #跳过暂存直接提交
+
+
+3:从现有仓库克隆
+        git clone giturl  #XXX (可以自己定义项目名称)               
+
+4：查看文件状态 
+         git status                                                                
+
+查看工作目录中当前文件和暂存区域快照之间的差异，也就是修改之后还没有暂存起来的变化内容
+        git diff                                                                    
+查看已经暂存起来的变化
+        git diff  --cached                                                    
+
+5:删除文件
+        git rm XXX                                                             
+
+6:移动文件
+        git mv file_from file_to                                           
+
+7：查看历史版本 
+        git   log                                                                  
+
+我们常用 -p 选项展开显示每次提交的内容差异，用 -2 则仅显示最近的两次更新：
+        git   log   -p   -2                                                       
+
+8:撤销操作
+         git   commit   --amend                                              
+
+9：取消对文件的修改
+         git  checkout  -- filename                                          
+
+10:从远程仓库抓取数据
+   fetch 命令只是将远端的数据拉到本地仓库，并不自动合并到当前工作分支
+         git    fetch   remote-name                                          
+git pull 命令自动抓取数据下来，然后将远端分支自动合并到本地仓库中当前分支
+         git    pull     remote-name                                          
+
+11:推送数据到远程仓库
+         git    push  remote-name  branch-name                     
+
+12:GIT分支
+Git 中的分支实际上仅是一个包含所指对象校验和（40 个字符长度 SHA-1 字串）的文件
+新建分支：
+          git   branch   branch-name                                        
+转换分支：
+          git   checkout   branch-name                                     
+新建分支并转换：
+          git   checkout   -b   branch-name                              
+删除分支：
+          git   branch   -d     branch-name                               
+合并分支：
+          git    merge    branch-name                               
+
+13:解决冲突
+1：如果希望保留生产服务器上所做的改动,仅仅并入新配置项, 处理方法如下:、
+git stash                                                                                    
+git pull                                                                                      
+git stash pop                                                                             
+然后可以使用git diff -w +文件名 来确认代码自动合并的情况.
+反过来,如果希望用代码库中的文件完全覆盖本地工作版本. 方法如下:
+git reset --hard                                                                            
+git pull                                                                                         
+其中git reset是针对版本,如果想针对文件回退本地修改,使用
+ git checkout HEAD file/to/restore                                                
+
+
+
+

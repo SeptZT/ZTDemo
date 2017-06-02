@@ -10,31 +10,39 @@ function BackTop(ele, opts) {
 
   var $ele = $.extend({}, $(this), $(ele));
 
-  $ele.off('click').on('click', this._move.bind(this));
+  this._back($ele);
 
-  $(this.opts.selector).on('scroll', this._checkPosition.bind(this, $ele));
+  this._scroll($ele);
 }
 
-BackTop.prototype._move = function() {
-  var obj = $(this.opts.selector);
+BackTop.prototype._back = function($ele) {
+  var $obj = $(this.opts.selector);
   var dest = this.opts.dest;
 
-  if(obj.scrollTop() != dest && !obj.is(':animated')) { //如果滚动条没有在指定位置, 并且点击回到顶部时滚动条处于静止状态
-    obj.animate({
-      scrollTop: dest
-    }, this.opts.speed);
-  }
-}
+  $ele.off('click').on('click', () => {
+    console.log(2222);
+    $(document).animate({scrollTop: 0}, 500);
+    return;
+    if($obj.scrollTop() != dest && !$obj.is(':animated')) {
+      $obj.animate({
+        scrollTop: dest
+      }, this.opts.speed);
+    }
+  });
+};
 
-BackTop.prototype._checkPosition = function($ele) {
-  var opts = this.opts;
+BackTop.prototype._scroll = function($ele) {
+  var $obj = this.opts.selector === 'body' ? $(document) : $(this.opts.selector);
+  var pos = this.opts.pos;
 
-  if($(opts.selector).scrollTop() > opts.pos) {
-    $ele.fadeIn('slow');
-  } else {
-    $ele.fadeOut();
-  }
-}
+  $obj.on('scroll', function() {
+    if($obj.scrollTop() >= pos && $ele.is(':hidden')) {
+      $ele.show();
+    } else if ($obj.scrollTop() < pos && $ele.is(':visible')) {
+      $ele.hide();
+    }
+  });
+};
 
 /* *
  * 封装成jQuery方法

@@ -174,6 +174,14 @@ Page.prototype._enter = function() {
   }.bind(this));
 };
 
+Page.prototype._reset = function(page) {
+  if (page) {
+    this.nowPage = page;
+  } else {
+    this.nowPage = 1;
+  }
+};
+
 /* module.exports = function(param, handle) {
   return new Page(param, handle);
 };*/

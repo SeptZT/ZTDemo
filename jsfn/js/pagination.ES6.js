@@ -163,18 +163,21 @@ class Page {
       }
     }.bind(this));
   };
+
+  _reset(page) {
+    if (page) {
+      this.nowPage = page;
+    } else {
+      this.nowPage = 1;
+    }
+  }
 }
 
-$.fn.pagination = function(param, handle) {
-  param.selector = this;
-  return new Page(param, handle);
-};
-
-if (module && module.exports) {
-  module.exports = function(param, handle) {
-    return new Page(param, handle);
-  };
-}
+//if (module && module.exports) {
+//module.exports = function(param, handle) {
+//  return new Page(param, handle);
+//};
+//}
 
 /* *
  * 参数说明:

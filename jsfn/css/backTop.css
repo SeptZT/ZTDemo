@@ -6,7 +6,12 @@
   width: 40px;
   font-size: 40px;
   color: #38B7EA;
+  cursor: pointer;
+  opacity: .6;
+  z-index: 100;
+  transition: all .5s;
 }
 #back_top:hover {
-  cursor: pointer;
+  opacity: 1;
+  transform: scale(1.2);
 }
