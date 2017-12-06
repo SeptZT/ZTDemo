@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		  .err1 {
+		    border: 1px solid red;
+		  }
+		</style>
+	</head>
+	<body>
+    <input type="text" check-type="required aa bb"/>
+    <input type="text" check-type="required ip nums" check-any="true"/>
+    <input type="text" check-type="domain ip" check-any/>
+    <button>确定</button>
+	</body>
+  <script src="../js/jquery-3.0.0.js"></script>
+	<script src="../js/formCheck.js"></script>
+	<script>
+    var check = new FormCheck(function(ele, tmp) {
+      console.log(tmp);
+      if (tmp.result) {
+        $(ele).removeClass('err1');
+      } else {
+        $(ele).addClass('err1');
+      }
+    });
+    console.log(check);
+    $('button').on('click', function() {
+      console.log(check._isForm());
+    });
+	</script>
+</html>

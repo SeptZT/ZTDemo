@@ -6,7 +6,7 @@ $disabled-color: #E9E9E9!important;
 $hover-color: #eee;
 $button-bg: #8fdaf7;
 
-ul.pagination {
+ul.zt-pagination {
   margin: 0;
   padding: 0;
   text-align: center;
@@ -35,19 +35,19 @@ ul.pagination {
     }
   }
 
-  .page-change,
-  .page-num {
+  .zt-page-change,
+  .zt-page-num {
     &:hover {
       background: $hover-color;
     }
   }
-  .page-change[index=page-first] {
+  .zt-page-change[index=zt-page-first] {
     border-radius: 4px 0 0 4px;
   }
-  .page-change[index=page-last] {
+  .zt-page-change[index=zt-page-last] {
     border-radius: 0 4px 4px 0;
   }
-  .page-search {
+  .zt-page-search {
     margin-left: 10px;
     border: none;
     line-height: calc(#{$height - 2px});
@@ -77,15 +77,15 @@ ul.pagination {
     }
   }
 
-  .page-selected {
+  .zt-page-selected {
     background-color: $selected-color;
     cursor: default;
   }
-  .page-disabled {
+  .zt-page-disabled {
     background-color: $disabled-color;
     cursor: no-drop;
   }
-  .err_tip {
+  .zt-err-tip {
     position: absolute;
     color: red;
   }

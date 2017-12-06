@@ -1,0 +1,43 @@
+.relation-box {
+  position: relative;
+  height: 500px;
+  width: 500px;
+  background: #eee;
+}
+.relation-box .tool-box {
+  position: absolute;
+  height: 250px;
+  width: auto;
+}
+.relation-box ul {
+  background: #fff;
+  line-height: 28px;
+  cursor: pointer;
+  padding: 5px 0;
+  background-color: #fff;
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+}
+.relation-box li {
+  position: relative;
+  list-style: none;
+  padding: 0 8px;
+  white-space: nowrap;
+}
+.relation-box li:hover {
+  background: #eee;
+}
+.relation-box li ul {
+  position: absolute;
+  top: 0;
+  left: 100%;
+}
+.relation-box .hide {
+  display: none;
+}
+
+.relation-chart {
+  height: 100%;
+  width: 100%;
+}

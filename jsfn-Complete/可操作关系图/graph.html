@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="./graph.css">
+</head>
+
+<body>
+  <div class="relation-box">
+    <div class="relation-chart"></div>
+    <div class="tool-box"></div>
+  </div>
+</body>
+<script src="./echarts.min.js"></script>
+<script src="./graph.js"></script>
+<script>
+  let chart = echarts.init(document.querySelector('.relation-chart'))
+  let data = [
+    {
+      name: '节点1',
+      category: 0,
+      value: 10,
+      symbol: 'image://./shape1.png'
+    },
+    {
+      name: '节点2',
+      category: 1,
+      value: 1,
+      symbol: 'image://./shape2.png'
+    },
+    {
+      name: '节点3',
+      category: 2,
+      value: 11,
+      symbol: 'image://./shape3.png'
+    },
+    {
+      name: '节点4',
+      category: 3,
+      value: 50,
+      symbol: 'image://./shape4.png'
+    }
+  ]
+  let links = [
+    {
+      source: '节点2',
+      target: '节点1'
+    },
+    {
+      source: '节点3',
+      target: '节点2'
+    },
+    {
+      source: '节点4',
+      target: '节点2',
+      lineStyle: {
+        normal: {
+          color: 'black',
+          opacity: 0.5,
+          width: 2,
+          curveness: 0
+        }
+      }
+    },
+    {
+      source: '节点1',
+      target: '节点4'
+    }
+  ]
+  let toolNodeList = [
+    {
+      name: 'source',
+      label: 'source'
+    },
+    {
+      name: 'target',
+      label: 'target'
+    },
+    {
+      label: '详情',
+      children: [
+        {
+          name: 'info',
+          label: '详情'
+        }
+      ]
+    },
+    {
+      label: '展开',
+      children: [
+        {
+          label: 'expand',
+          children: [
+            {
+              name: 'test',
+              label: '测试'
+            },
+            {
+              name: 'test1',
+              label: '测试1'
+            }
+          ]
+        },
+        {
+          name: 'source',
+          label: '源11测试1'
+        },
+        {
+          name: 'target',
+          label: 'target'
+        }
+      ]
+    },
+
+    {
+      name: 3,
+      divided: true,
+      label: '关系'
+    }
+  ]
+  let toolLineList = [
+    {
+      name: 'relation',
+      label: '关系'
+    }
+  ]
+  let categories = data.map(x => {
+    return { name: x.name }
+  })
+  let graphObj = new Graph(chart, {
+    data: data,
+    links: links,
+    categories: categories,
+    toolNodeList: toolNodeList,
+    toolLineList: toolLineList,
+    clickTool: (name, node) => {
+      getDataByName(name, node)
+    }
+  })
+  function draw() {
+
+  }
+  let nodeNum = 10
+  function getDataByName(name, node) {
+    nodeNum++
+    let newNodes = [
+      {
+        name: '节点' + nodeNum,
+        category: 2,
+        symbol: 'image://./shape1.png'
+      }
+    ]
+    let newLinks = getNewLinks(newNodes, node)
+    // 新增节点
+    graphObj._addNewNodes(newNodes, newLinks)
+  }
+  function getNewLinks(newNodes, node) {
+    let newLinks = newNodes.map(x => {
+      return {
+        target: node.name,
+        source: x.name
+      }
+    })
+    return newLinks
+  }
+
+</script>
+
+</html>

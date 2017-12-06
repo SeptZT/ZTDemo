@@ -1,0 +1,33 @@
+// 梯形
+.trapezoid {
+    width: 60px;
+    border-bottom: 50px solid #38B7EA;
+    border-left: 40px solid transparent;
+    border-right: 40px solid transparent;
+}
+
+.rank {
+    width: 100px;
+    border-top: 20px solid #009F95;
+    border-left: 20px solid transparent;
+    border-bottom: 20px solid #009F95;
+}
+
+.clip-path {
+    height: 200px;
+    background: url(bg.jpg) no-repeat 0 0 / 100% 100%;
+    -webkit-clip-path: polygon(0 0, 50% 40px, 100% 0, 120% 100%, 0 100%); // 兼容谷歌
+    clip-path: polygon(0 0, 50% 40px, 100% 0, 120% 100%, 0 100%); // 支持火狐、谷歌需加-webkit-、不支持IE
+}
+
+body {
+    background: #A9E4E9;
+}
+
+#shapes {
+    width: 400px;
+}
+
+#shapes>div {
+    margin: 20px auto;
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+      #box {
+        height: 300px;
+        overflow: auto;
+        border: 1px solid red;
+      }
+      .hide {
+        display: none;
+      }
+      thead {
+        background: #00625A;
+      }
+		</style>
+	</head>
+	<body>
+	  <div id="box">
+	    <table>
+      <thead>
+        <tr>
+          <td>表头aaa</td>
+          <td>表头bbb</td>
+          <td>表头ccc</td>
+          <td>表头ddd</td>
+        </tr>
+        <tbody></tbody>
+      </thead>
+    </table>
+    <div class="loadMore">加载更多。。。</div>
+	  </div>
+
+    <script src="../../js/jquery-3.0.0.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/fixedThead.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+    	make_thead('box', 0);
+
+    	function load() {
+    	  var html = '';
+    	  for (var i=0; i<10; i++) {
+    	    html += `<tr>
+          <td>aaa</td>
+          <td>bbb</td>
+          <td>ccc</td>
+          <td>ddd</td>
+        </tr>`;
+    	  }
+    	  $('tbody').append(html);
+
+    	}
+    	load();
+    	$('.loadMore').on('click', function() {
+    	  load();
+    	})
+    </script>
+	</body>
+</html>

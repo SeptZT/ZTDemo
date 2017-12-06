@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			span {
+			  display: inline-block;
+			  height: 40px;
+			  width: 60px;
+			  background: #ccc;
+			  text-align: center;
+			  line-height: 40px;
+			}
+		</style>
+	</head>
+	<body>
+	  <div id="box">
+
+	  </div>
+	  <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	  <script type="text/javascript">
+	    let html = '';
+	    let num = 15;
+      let color = getColorArr1(num);
+
+      console.log(color);
+	    for (let i=0; i<num; i++) {
+	      html += `<span style="background: ${color[i]}">${i}</span>`;
+	    }
+	  	$('#box').html(html);
+	  	function getColorArr(count) {
+	  	  let arr = [];
+	  	  let step_deg = parseInt(360 / count);
+
+        for (let i=0; i<count; i++) {
+          arr.push(`hsla(${i * step_deg}, 90%, 90%, 1)`);
+        }
+        return arr;
+	  	}
+	  	function getColorArr1(count) {
+        let arr = [];
+        let step = parseInt(50 / count);
+        let step_deg = parseInt(30 / count);
+
+        for (let i=0; i<count; i++) {
+          arr.push(`hsla(${30 + step_deg * i}, ${90 + step * i}%, ${50 + step * i / 2}%, 1)`);
+        }
+        return arr;
+      }
+	  </script>
+	</body>
+</html>

@@ -1,0 +1,76 @@
+ul.zt-pagination {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  -webkit-user-select: none;
+  user-select: none;
+}
+ul.zt-pagination:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+ul.zt-pagination li {
+  display: inline-block;
+  list-style: none;
+  cursor: pointer;
+  vertical-align: top;
+  height: 34px;
+  min-width: 34px;
+  line-height: 34px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+ul.zt-pagination li + li {
+  border-left: none;
+}
+ul.zt-pagination .zt-page-change:hover,
+ul.zt-pagination .zt-page-num:hover {
+  background: #eee;
+}
+ul.zt-pagination .zt-page-change[index=zt-page-first] {
+  border-radius: 4px 0 0 4px;
+}
+ul.zt-pagination .zt-page-change[index=zt-page-last] {
+  border-radius: 0 4px 4px 0;
+}
+ul.zt-pagination .zt-page-search {
+  margin-left: 10px;
+  border: none;
+  line-height: calc(32px);
+}
+ul.zt-pagination .zt-page-search button,
+ul.zt-pagination .zt-page-search input {
+  padding: 0;
+}
+ul.zt-pagination .zt-page-search input {
+  width: 50px;
+  height: 34px;
+  border: 1px solid #ddd;
+  text-align: center;
+  border-radius: 3px 0 0 3px;
+}
+ul.zt-pagination .zt-page-search button {
+  width: 40px;
+  height: calc(34px + 2px);
+  background-color: #8fdaf7;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 0 3px 3px 0;
+}
+ul.zt-pagination .zt-page-search span {
+  padding-left: 10px;
+}
+ul.zt-pagination .zt-page-selected {
+  background-color: #b6c9d4 !important;
+  cursor: default;
+}
+ul.zt-pagination .zt-page-disabled {
+  background-color: #E9E9E9 !important;
+  cursor: no-drop;
+}
+ul.zt-pagination .zt-err-tip {
+  position: absolute;
+  color: red;
+}

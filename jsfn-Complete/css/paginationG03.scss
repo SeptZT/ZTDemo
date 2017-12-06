@@ -1,0 +1,94 @@
+$height: 34px;
+$min-width: 34px;
+$border-color: #ddd;
+$selected-color: #fff!important;
+$selected-bgcolor: #1aae88!important;
+$disabled-color: #E9E9E9!important;
+$hover-color: #eee;
+$button-bg: #4cc3a5;
+
+ul.zt-pagination {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  -webkit-user-select: none;
+  user-select: none;
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+
+  li {
+    display: inline-block;
+    list-style: none;
+    cursor: pointer;
+    vertical-align: top;
+
+    height: $height;
+    min-width: $min-width;
+    line-height: $height;
+    text-align: center;
+    border: 1px solid $border-color;
+
+    &+li {
+      border-left: none;
+    }
+  }
+
+  .zt-page-change,
+  .zt-page-num {
+    &:hover {
+      background: $hover-color;
+    }
+  }
+  .zt-page-change[index=zt-page-first] {
+    border-radius: 4px 0 0 4px;
+  }
+  .zt-page-change[index=zt-page-last] {
+    border-radius: 0 4px 4px 0;
+  }
+  .zt-page-search {
+    margin-left: 10px;
+    border: none;
+    line-height: calc(#{$height - 2px});
+
+    button,
+    input {
+      padding: 0;
+    }
+    input {
+      width: 50px;
+      height: $height;
+      border: 1px solid $border-color;
+      text-align: center;
+      border-radius: 3px 0 0 3px;
+    }
+    button {
+      width: 40px;
+      height: calc(#{$height} + 2px);
+      background-color: $button-bg;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 0 3px 3px 0;
+    }
+    span {
+      padding-left: 10px;
+    }
+  }
+
+  .zt-page-selected {
+    background-color: $selected-bgcolor;
+    color: $selected-color;
+    cursor: default;
+  }
+  .zt-page-disabled {
+    background-color: $disabled-color;
+    cursor: no-drop;
+  }
+  .zt-err-tip {
+    position: absolute;
+    color: red;
+  }
+}

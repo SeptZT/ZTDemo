@@ -27,7 +27,7 @@
         colorStr: "green",
         fontSize: 12
       };
-      var setting = $.extend(defaultSetting, option);
+      var setting = $.extend({}, defaultSetting, option);
       this.css("color", setting.colorStr).css("fontSize", setting.fontSize + "px");
       return this;
     }
