@@ -28,10 +28,10 @@ ul.zt-pagination .zt-page-change:hover,
 ul.zt-pagination .zt-page-num:hover {
   background: #eee;
 }
-ul.zt-pagination .zt-page-change[index=zt-page-first] {
+ul.zt-pagination .zt-page-change[index='zt-page-first'] {
   border-radius: 4px 0 0 4px;
 }
-ul.zt-pagination .zt-page-change[index=zt-page-last] {
+ul.zt-pagination .zt-page-change[index='zt-page-last'] {
   border-radius: 0 4px 4px 0;
 }
 ul.zt-pagination .zt-page-search {
@@ -67,10 +67,11 @@ ul.zt-pagination .zt-page-selected {
   cursor: default;
 }
 ul.zt-pagination .zt-page-disabled {
-  background-color: #E9E9E9 !important;
+  background-color: #e9e9e9 !important;
   cursor: no-drop;
 }
 ul.zt-pagination .zt-err-tip {
   position: absolute;
   color: red;
+  transition: all 0.5s;
 }

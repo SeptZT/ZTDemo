@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Document</title>
+  <style type="text/css">
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+    .pagination {
+      margin-top: 100px;
+    }
+  </style>
+  <link rel="stylesheet" type="text/css" href="./pagination.css" />
+</head>
+
+<body>
+  <div id="page1">
+
+  </div>
+  <div id="page2">
+
+  </div>
+  <!-- <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script> -->
+  <script src="./pagination.ES6.js" type="text/javascript" charset="utf-8"></script>
+  <script type="text/javascript">
+    var page = new Page({ 'selector': '#page1', 'pagesize': 8 }, function (nowPage) {
+      loadData(nowPage);
+    });
+    console.log(page);
+    loadData();
+    function loadData(nowPage) {
+      //	    page._reset(12);
+      page._init(1000);
+    }
+  </script>
+</body>
+
+</html>
