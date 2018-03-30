@@ -1,59 +1,52 @@
-zeroToNum();
-function zeroToNum(param) {
-  if (!param) {
-    param = {
-      time: 300,
-      selector: 'body'
-    }
-  } else {
-    if (!param.selector) {
-      param.selector = 'body';
-    }
-    if (!param.time) {
-      param.time = 300;
-    }
+function zeroToNum(params) {
+  const DEFAULT = {
+    totalTime: 300, // 执行完整个过程所需时间
+    maxTime: 100, // 定时器调用间隔时间
+    selector: 'body'
   }
-  var $eles = $(param.selector).find('[toNum]');
-
-  $eles.each(function(i) {
-    var ele = $eles[i];
-    var num = ele.getAttribute('toNum');
-
+  params = Object.assign({}, DEFAULT, params)
+  let eles = document.querySelectorAll(params.selector + ' [data-num]')
+  eles.forEach(x => {
+    let num = x.getAttribute('data-num')
     if (num && !isNaN(num) && num > 0) {
-      toNum(ele, num, param.time);
+      toNum(x, num, params)
     }
-  });
+  })
 }
 
-function toNum(dom, num, totalTime) {
-  var i = 1, // 写入容器的数字
-      time, // 定时器调用时间
-      addnum; // 每次递增的数字
+function toNum(dom, num, params) {
+  let totalTime = params.totalTime
+  let i = 1 // 写入容器的数字
+  let time // 定时器调用时间
+  let addnum // 每次递增的数字
 
   // 给容器一个初值
-  dom.innerText = i;
+  dom.innerText = i
 
   if (num < totalTime) {
-    time = totalTime / num;
-    addnum = 1;
+    time = totalTime / num
+    addnum = 1
   } else {
-    time = 10;
-    addnum = Math.floor(num / totalTime) * time;
+    time = 10
+    addnum = Math.floor(num / totalTime) * time
   }
-
+  time = time > params.maxTime ? params.maxTime : time
   // 定义timer定时器
-  var timer = setInterval(function() {
+  let timer = setInterval(function() {
     // 若i+addnum大于num，调整每次递增的数字
-    if(addnum > 1 && i + addnum >= num) {
-      addnum = Math.floor((num - i) / totalTime) > 1 ? Math.floor((num - i) / totalTime) : 1;
-      console.log(1111111111, addnum);
+    if (addnum > 1 && i + addnum >= num) {
+      addnum =
+        Math.floor((num - i) / totalTime) > 1
+          ? Math.floor((num - i) / totalTime)
+          : 1
     }
-    console.log(i, addnum);
-    i = i + addnum;
-    dom.innerText = i;
-
-    if(i >= num) {
-      clearInterval(timer);
+    i += addnum
+    dom.innerText = i
+    if (i >= num) {
+      clearInterval(timer)
     }
-  }, time);
+  }, time)
 }
+
+zeroToNum()
+// export default zeroToNum

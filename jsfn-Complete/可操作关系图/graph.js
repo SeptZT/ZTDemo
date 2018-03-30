@@ -30,8 +30,8 @@ class Graph {
     this.toolBox = this.pDom.querySelector('.tool-box')
     this._draw()
     this._chartResize()
-    this._createToolList(this.params.toolNodeList, 'node')
-    this._createToolList(this.params.toolLineList, 'line')
+    this._createToolList(this.params.toolNodeList, 'node')  // 绘制节点右键操作框
+    this._createToolList(this.params.toolLineList, 'line')  // 绘制连线右键操作框
     this._listHover()
     this._toolItemClick()
     this._chartClick() // 点击节点或线显示操作框
@@ -153,6 +153,7 @@ class Graph {
     if (this.params.color) {
       option.color = this.params.color
     }
+    console.log(option)
     return option
   }
   _chartClick() {
@@ -214,19 +215,21 @@ class Graph {
     })
   }
   _toolHide(type) {
-    if (type) {
-      this.toolBox.querySelector('.' + type).style.display = 'none'
-    } else {
-      this.toolBox.querySelector('.line').style.display = 'none'
-      this.toolBox.querySelector('.node').style.display = 'none'
-    }
+    this._setToolDisplay('none', type)
   }
   _toolShow(type) {
+    this._setToolDisplay('block', type)
+  }
+  _setToolDisplay(val, type) {
     if (type) {
-      this.toolBox.querySelector('.' + type).style.display = 'block'
-    } else {
-      this.toolBox.querySelector('.line').style.display = 'block'
-      this.toolBox.querySelector('.node').style.display = 'block'
+      this.toolBox.querySelector('.' + type).style.display = val
+      return
+    }
+    if (this.toolBox.querySelector('.line')) {
+      this.toolBox.querySelector('.line').style.display = val
+    }
+    if (this.toolBox.querySelector('.node')) {
+      this.toolBox.querySelector('.node').style.display = val
     }
   }
   _listHover() {

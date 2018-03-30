@@ -29,6 +29,8 @@ git clone [url] ([url]是github项目的路径：git@github.com:ning00/reactStud
 
 
 删除文件：git rm name.txt(删除本地的)
+
+提交文件步骤：
 git add --a
 git commit -m "备注"
 git push [url](更新到服务器)
